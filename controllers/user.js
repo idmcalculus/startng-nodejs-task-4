@@ -6,7 +6,7 @@ const User = require('../models/user');
 dotenv.config();
 
 class UserController {
-	static async userSignup (req, res) {
+	async userSignup (req, res) {
 
 		try {
 			const user = new User(req.body);
