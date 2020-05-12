@@ -1,8 +1,10 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const users = require('./routes/user');
+const dotenv = require('dotenv');
 require('./models/db');
 
+dotenv.config();
 const app = express();
 
 app.use(bodyParser.json());
@@ -15,5 +17,13 @@ app.use((req, res, next) => {
   });
 
 app.use('/api/v1', users);
+
+app.get('/', (req, res) => {
+    res.send(`Welcome to my NodeJs StartNg Tutorial. Check my github page <a href="https://github.com/idmcalculus" style="color: blue">here</a>`);
+});
+
+app.listen(process.env.PORT, () => {
+  console.log(`Listening on port ${process.env.PORT}...`);
+});
 
 module.exports = app;
